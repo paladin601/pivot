@@ -16,7 +16,15 @@ export function initPivot(mps){
         {
             rows: ["Caracteristica"],
             cols: ["Mes"],
-            aggregator: sum(intFormat)(["value"])
+            colKeys:["mes 1","mes 2","mes 3","mes 4","mes 5","mes 6","mes 7","mes 8","mes 9","mes 10","mes 11","mes 12"],
+            aggregator: sum(intFormat)(["value"]),
+            rendererOptions: {
+                table: {
+                    clickCallback: function(e, value, filters, pivotData){
+                        console.log(pivotData);
+                    }
+                }
+            }
         }
       );
 }
