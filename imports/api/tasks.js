@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
  
 export const Tasks = new Mongo.Collection('tasks');
+
 if (Meteor.isServer) {
     Meteor.publish('tasks', function diagramPublication() {
       return Tasks.find();

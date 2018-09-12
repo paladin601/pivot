@@ -5,7 +5,15 @@ import Task from './Task.js';
 import { initPivot } from './pivotHelper.js';
 
 var aux=0;
-var mps=[{color: "blue", shape: "circle"},{color: "red", shape: "triangle"}];
+var mps=[{Caracteristica: "Luz", Mes: "mes 1",value:20},
+{Caracteristica: "Luz", Mes: "mes 2",value:20},
+{Caracteristica: "Luz", Mes: "mes 3",value:20},
+{Caracteristica: "Telefono", Mes: "mes 1",value:10},
+{Caracteristica: "Telefono", Mes: "mes 2",value:10},
+{Caracteristica: "Telefono", Mes: "mes 3",value:10},
+{Caracteristica: "Agua", Mes: "mes 1",value:30},
+{Caracteristica: "Agua", Mes: "mes 2",value:19},
+{Caracteristica: "Agua", Mes: "mes 3",value:39}];
 // App component - represents the whole app
 class App extends Component {
   renderTasks() {
@@ -17,7 +25,6 @@ class App extends Component {
       <Task key={task._id} value={task} mps={mps}/>
     ));
   }
-
  
   render() {
     return (
