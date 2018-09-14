@@ -152,6 +152,8 @@ var mps=[
 {Caracteristica: "Agua", Mes: "mes 21",value:390},
 {Caracteristica: "Agua", Mes: "mes 22",value:390},
 {Caracteristica: "Agua", Mes: "mes 23",value:3900},
+{Caracteristica: "Agua1", Mes: "mes 23",value:3900},
+{Caracteristica: "Agua2", Mes: "mes 23",value:3900},
 
 ];
 // App component - represents the whole app

@@ -1,5 +1,6 @@
 <head>
   <title>Todo List</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- optional: mobile support with jqueryui-touch-punch -->
 </head>
  
@@ -7,13 +8,117 @@
 <body>
     <div class="container">
         <div class="header">
-
+                <div class="navbar">
+                    <div class="icon">
+                        <i class="fas fa-align-justify"></i>
+                    </div>
+                    <div class="scene">
+                        <p>Modulo de Analisis</p>
+                        <p>></p>
+                        <p>Sensibilizacion</p>
+                        <p>></p>
+                        <p><strong>Escenario de Prueba 1</strong></p>
+                    </div>
+                    <div class="user">
+                        <div>
+                            <p>LEK 3</p>
+                        </div>
+                        
+                        <div>
+                            <i class="fas fa-user-circle"></i>
+                            <i class="fas fa-bullhorn"></i>
+                            <i class="fas fa-sort-down"></i>
+                            <i class="far fa-question-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu">
+                    <div class="scene">
+                        <p>Income Statement</p>
+                        <p><strong>Balance Sheet</strong></p>
+                        <p>Cash Flow</p>
+                        <p>Dashboard</p>
+                        <p>Observaciones y Colaboradores</p>
+                    </div>
+                    <div class="name-module">
+                        <p>Sensibilacion Reactiva</p>
+                    </div>
+                </div>
+        </div>
+        <div class="container-tl">
+            <h4>Balance Sheet Data View</h4>
         </div>
         <div class="container-left">
-            <h4>Balance Sheet Data View</h4>
             <div id="output"></div>
         </div>
-        <div class="container-right"></div>
+        <div class="container-tr">
+                <h4>Metricas Claves</h4>
+            </div>
+        <div class="container-right">
+            <div class="container-display">
+                <div class="container-item1">
+                    <p>222.081</p>
+                    <p>Cash</p>
+                </div>
+                <div class="container-item1">
+                    <p>43.705</p>
+                    <p>Recoverable Taxes</p>
+                </div>
+                <div class="container-item1">
+                    <p>2.063.111</p>
+                    <p>Totals Asset</p>
+                </div>
+                <div class="container-item1">
+                    <p>130.048</p>
+                    <p>Net Income (loss)</p>
+                </div>
+                <p class="container-item-text">
+                    Prueba de texto aca para errores en el campo o sumas etc etc etc
+                </p>
+            </div>
+            <div class="container-display">
+                    <div class="container-item2">
+                            <p>222.081</p>
+                            <p>Cash</p>
+                    </div>
+                    <div class="container-item2">
+                            <p>43.705</p>
+                            <p>Recoverable Taxes</p>
+                    </div>
+                    <div class="container-item2">
+                            <p>2.063.111</p>
+                            <p>Totals Asset</p>
+                    </div>
+                    <div class="container-item2">
+                            <p>130.048</p>
+                            <p>Net Income (loss)</p>
+                    </div>
+                    <p class="container-item-text">
+                            Prueba de texto aca para errores en el campo o sumas etc etc etc
+                        </p>
+            </div>
+            <div class="container-display">
+                    <div class="container-item3">
+                        <p>0</p>
+                        <p>Dif Cash</p>
+                        </div>
+                        <div class="container-item3">
+                                <p>0</p>
+                                <p>Dif Recoverable Taxes</p>
+                        </div>
+                        <div class="container-item3">
+                                <p>0</p>
+                                <p>Dif Totals Asset</p>
+                        </div>
+                        <div class="container-item3">
+                                <p>0</p>
+                                <p>Dif Net Income (loss)</p>
+                        </div>
+                        <p class="container-item-text">
+                                Prueba de texto aca para errores en el campo o sumas etc etc etc
+                            </p> 
+            </div>
+        </div>
         <div class="container-footer"></div>
     </div>
     <div id="render-target"></div>

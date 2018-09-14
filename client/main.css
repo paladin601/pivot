@@ -2,29 +2,118 @@ body{
   margin:0px;
   padding: 0px 10px;
 }
+h4{
+  margin:0px;
+  color:#9f9f9f;
+}
+p{
+  margin: 0px;
+}
 .container{
   display: grid;
-  grid-template-areas: 'header header'
-                        'left right'
-                        'footer footer';
-  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 'header header header'
+                        'tittleL  tittleL tittleR'
+                        'left  left right'
+                        'footer footer footer';
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
 }
+.container-tl{
+  grid-area: tittleL;
 
+}
+.container-tr{
+  grid-area: tittleR;
+}
+.menu{
+  font-size: 13px;
+  margin-top:5px;
+  padding: 5px;
+  background-color: #d7e5ef;
+  color:#889bac;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+.user{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .header{
   grid-area: header;
-  min-height: 100px;
+}
+.name-module{
+  color:#a7b0b9;
+  display: flex;
+  justify-content: center;
+}
+.navbar{
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 0.25fr 5fr 3fr;
+  border-bottom: 1px solid black;
+}
+.scene{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container-item-text{
+  grid-column: 1/5;
+  padding: 10px 10px 10px 0px;
+}
+.icon{
+  border-right: 1px solid black;
+  margin: 5px 0px;
+}
+.icon>i{
+  margin:10px
 }
 .container-left{
   grid-area: left;
   overflow: auto;
-  max-height: 65vh;
+  max-height: 55vh;
+}
+.container-display{
+  border: 1px solid #c1c0c2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-around;
+  padding: 5px;
 }
 .container-right{
   grid-area: right;
-  display: block;
+  border:1px solid #dcdddd;
+  padding: 5px;
+  display:grid;
+  grid-gap:5px;
+  overflow: auto;
+  max-height: 55vh;
 }
 .container-footer{
   grid-area:footer;
   min-height: 100px;
+}
+
+.container-display>div>p{
+  color:white;
+  font-size: 13px;
+  text-align: center;
+}
+.container-display>div :first-child{
+  margin-top:5px;
+}
+.container-display>div{
+  height: 72px;
+  width: 72px;
+  display: grid;
+ }
+.container-item1{
+  background-color: #94bbd5;
+}
+.container-item2{
+  background-color: #77b5ca;
+}
+.container-item3{
+  background-color: #99c8ba;
 }
