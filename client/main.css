@@ -91,8 +91,15 @@ p{
   max-height: 55vh;
 }
 .container-footer{
+  border : 1px solid #a7b0b9;
   grid-area:footer;
+  display:flex;
   min-height: 100px;
+}
+.container-footer > div {
+  background-color: white;
+  margin: 10px;
+  /* text-align: center; */
 }
 
 .container-display>div>p{
@@ -116,4 +123,24 @@ p{
 }
 .container-item3{
   background-color: #99c8ba;
+}
+.container-item4{
+  background-color: rgb(181, 226, 213);
+}
+
+.container-tools1{
+  padding: 5px;
+}
+.tools-titel{
+  display: block;
+  font-size: 1.17em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+.button-footer{
+  background-color: white;
+  color: #000000;
+  border: 2px solid rgb(170, 221, 245); /* Green */
+  border-radius: 4px;
+  padding: 5px;
 }
