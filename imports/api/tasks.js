@@ -11,8 +11,8 @@ if (Meteor.isServer) {
   }
   
   Meteor.methods({
-    'tasks.insert'(text) {
-      check(text, String);
+    'tasks.insert'(mps) {
+      check(mps, String);
   
      /*esto es para verificar si el usuario esta logeado con los tokens de meteor como esta app es aparte 
      me dio flojera ponerle un login para activar el token jaja en el proyecto real si funciona 
@@ -21,7 +21,7 @@ if (Meteor.isServer) {
       }
   */
       Tasks.insert({
-        text
+        mps
       });
     },
     'tasks.remove'(tasksId) {

@@ -3,6 +3,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Tasks } from '../api/tasks.js';
 import Task from './Task.js';
 import { initPivot } from './pivotHelper.js';
+import "jquery";
+import "pivottable";
+import "jqueryui";
 
 var aux=0;
 var mps=[
@@ -78,7 +81,6 @@ var mps=[
 {Caracteristica: "Telefono Celular", Mes: "mes 10",value:10},
 {Caracteristica: "Telefono Celular", Mes: "mes 11",value:10},
 {Caracteristica: "Telefono Celular", Mes: "mes 12",value:10},
-
 {Caracteristica: "Telefono Celular1", Mes: "mes 1",value:10},
 {Caracteristica: "Telefono Celular1", Mes: "mes 2",value:10},
 {Caracteristica: "Telefono Celular1", Mes: "mes 3",value:10},
@@ -154,17 +156,46 @@ var mps=[
 {Caracteristica: "Agua", Mes: "mes 23",value:3900},
 {Caracteristica: "Agua1", Mes: "mes 23",value:3900},
 {Caracteristica: "Agua2", Mes: "mes 23",value:3900},
-
 ];
+var sum = $.pivotUtilities.aggregatorTemplates.sum;
+var numberFormat = $.pivotUtilities.numberFormat;
+var intFormat = numberFormat({digitsAfterDecimal: 0});
+var config={
+  rows: ["Caracteristica"],
+  cols: ["Mes"],
+  aggregator: sum(intFormat)(["value"]),
+  rendererOptions: {
+      table: {
+          clickCallback: function(e, value, filters, pivotData){
+              console.log(pivotData.tree,e,value,filters);
+          }
+      }
+  }
+};
+
 // App component - represents the whole app
 class App extends Component {
   renderTasks() {
     if(aux==0){
-      initPivot(mps);
+
+      $("#hola").text(JSON.stringify(mps, undefined, 2));
+      $('#hola').on('mouseleave',function(){
+
+          var mps=JSON.parse(this.value);
+          debugger;
+          var obj=Tasks.find().fetch();
+          if(obj.length>0){
+            Meteor.call('tasks.remove', obj[0]._id);
+          }
+          Meteor.call('tasks.insert', JSON.stringify(mps));
+          // Change occurred so count chars...
+      });
+
+      initPivot(mps,config);
       aux=1;
     }
     return this.props.tasks.map((task) => (
-      <Task key={task._id} value={task} mps={mps}/>
+      <Task key={task._id} config={config} mps={task.mps}/>
     ));
   }
  

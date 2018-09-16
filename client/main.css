@@ -93,8 +93,8 @@ p{
 .container-footer{
   border : 1px solid #a7b0b9;
   grid-area:footer;
-  display:flex;
-  min-height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 .container-footer > div {
   background-color: white;
