@@ -10,7 +10,7 @@ import { Meteor } from 'meteor/meteor';
 export default class Task extends Component {
   updateBA(){
     $("#output").pivot(JSON.parse(this.props.mps),this.props.config , true);
-    $("#hola").text(this.props.mps)
+    // $("#hola").text(this.props.mps)
   }
   render() {
     return (

@@ -178,18 +178,18 @@ class App extends Component {
   renderTasks() {
     if (aux == 0) {
 
-      $("#hola").text(JSON.stringify(mps, undefined, 2));
-      $('#hola').on('mouseleave', function () {
+      // $("#hola").text(JSON.stringify(mps, undefined, 2));
+      // $('#hola').on('mouseleave', function () {
 
-        var mps = JSON.parse(this.value);
-        debugger;
-        var obj = Tasks.find().fetch();
-        if (obj.length > 0) {
-          Meteor.call('tasks.remove', obj[0]._id);
-        }
-        Meteor.call('tasks.insert', JSON.stringify(mps));
-        // Change occurred so count chars...
-      });
+      //   var mps = JSON.parse(this.value);
+      //   debugger;
+      //   var obj = Tasks.find().fetch();
+      //   if (obj.length > 0) {
+      //     Meteor.call('tasks.remove', obj[0]._id);
+      //   }
+      //   Meteor.call('tasks.insert', JSON.stringify(mps));
+      //   // Change occurred so count chars...
+      // });
 
       initPivot(mps, config);
       aux = 1;
