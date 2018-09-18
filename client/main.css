@@ -94,7 +94,7 @@ p{
   border : 1px solid #a7b0b9;
   grid-area:footer;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr 4fr 1fr 1fr 1fr;
 }
 .container-footer > div {
   background-color: white;
