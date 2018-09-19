@@ -6,19 +6,19 @@ import { initPivot } from './pivotHelper.js';
 import "jquery";
 import "pivottable";
 import "jqueryui";
-import { sensitiveTable } from './table.js';
+import { sensitiveTable, update } from './table.js';
 
 var aux = 0;
 var mps = [
-  { Caracteristica: "Luz", Mes: "mes 1", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 2", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 3", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 4", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 5", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 6", value: 15 },
-  { Caracteristica: "Luz", Mes: "mes 7", value: 25 },
-  { Caracteristica: "Luz", Mes: "mes 8", value: 45 },
-  { Caracteristica: "Luz", Mes: "mes 9", value: 50 },
+  { Caracteristica: "Luz", Mes: "mes 1", value: 200 },
+  { Caracteristica: "Luz", Mes: "mes 2", value: 210 },
+  { Caracteristica: "Luz", Mes: "mes 3", value: 15 },
+  { Caracteristica: "Luz", Mes: "mes 4", value: 45 },
+  { Caracteristica: "Luz", Mes: "mes 5", value: 250 },
+  { Caracteristica: "Luz", Mes: "mes 6", value: 260 },
+  { Caracteristica: "Luz", Mes: "mes 7", value: 255 },
+  { Caracteristica: "Luz", Mes: "mes 8", value: 999 },
+  { Caracteristica: "Luz", Mes: "mes 9", value: 123 },
   { Caracteristica: "Luz", Mes: "mes 10", value: 3 },
   { Caracteristica: "Luz", Mes: "mes 11", value: 12 },
   { Caracteristica: "Luz", Mes: "mes 12", value: 11 },
@@ -180,20 +180,54 @@ var config = {
 class App extends Component {
   renderTasks() {
     if (aux == 0) {
-
+      sensitiveTable(mps);
       // $("#hola").text(JSON.stringify(mps, undefined, 2));
-      // $('#hola').on('mouseleave', function () {
+      let a = $('.insert')
+      for(let i =0 ; i < a.length;i++){
+        if(a[i].type === "number"){
+          a[i].setAttribute("onClick", function updateT(){
+            var aux=$(".insert");
+            console.log(aux);
+            let meses = [],
+            mes = true,
+            caracteristica,
+            newMps=[];
+    
+            for(let i = 0; i < aux.length; i++){
+    
+                if( mes && aux[i+1].type !== "number"){
+                    meses.push(aux[i].value);
+                }else{
+                    mes = false;  
+                    caracteristica = aux[i].value;
+                    for(let j = 0; j < meses.length; j++){
+                        i++;
+                        newMps.push({Caracteristicas : caracteristica,
+                                        Mes: meses[j],
+                                        value : aux[i].value,});
+                    }
+                }
+            }
+            var obj = Tasks.find().fetch();
+            if (obj.length > 0) {
+              Meteor.call('tasks.remove', obj[0]._id);
+            }
+            Meteor.call('tasks.insert', JSON.stringify(newMps));
+            // console.log(newMps);
+        })
+        }
+      }
 
       //   var mps = JSON.parse(this.value);
       //   debugger;
-      //   var obj = Tasks.find().fetch();
-      //   if (obj.length > 0) {
-      //     Meteor.call('tasks.remove', obj[0]._id);
-      //   }
-      //   Meteor.call('tasks.insert', JSON.stringify(mps));
+        // var obj = Tasks.find().fetch();
+        // if (obj.length > 0) {
+        //   Meteor.call('tasks.remove', obj[0]._id);
+        // }
+        // Meteor.call('tasks.insert', JSON.stringify(mps));
       //   // Change occurred so count chars...
       // });
-      sensitiveTable(mps);
+     
       initPivot(mps, config);
       aux = 1;
     }

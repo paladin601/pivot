@@ -1,4 +1,6 @@
-export function sensitiveTable(mps){
+import "jquery";
+
+export function sensitiveTable(mps,scope){
 
     var body = document.getElementById("table"),
     mes = false,
@@ -12,7 +14,7 @@ export function sensitiveTable(mps){
     j = 0,
     tabla   = document.createElement("table"),
     tblBody = document.createElement("tbody");
-
+    tabla.setAttribute("id","tabla_update");
     // Crea las celdas
     for (var i = 0; i < mps.length; i++) {
 
@@ -31,7 +33,7 @@ export function sensitiveTable(mps){
                 reset = true;
                 mes = true;
                 tblBody.appendChild(hilera);
-                i = 0;
+                i = -1;
 
             }else{
 
@@ -44,6 +46,7 @@ export function sensitiveTable(mps){
 
                 textoCelda =  document.createElement("input");
                 textoCelda.type = "text"
+                textoCelda.className = "insert"
                 textoCelda.value = mps[i].Mes;
                 meses.push(mps[i].Mes);
                 celda.appendChild(textoCelda);
@@ -57,12 +60,16 @@ export function sensitiveTable(mps){
                 mes = true;
                 tblBody.appendChild(hilera);
                 firts = true;
-
+                i--;
+                
             }else{
 
                 if(firts){
-                    textoCelda = document.createTextNode(caracteristica);
+                    textoCelda = document.createElement("input");
                     celda.appendChild(textoCelda);
+                    textoCelda.type = "text"
+                    textoCelda.value = mps[i].Caracteristica;
+                    textoCelda.className = "insert";
                     hilera.appendChild(celda);
                     celda = document.createElement("td");
                     firts = false;
@@ -72,6 +79,7 @@ export function sensitiveTable(mps){
                     textoCelda =  document.createElement("input");
                     textoCelda.type = "number"
                     textoCelda.value = 0;
+                    textoCelda.className = "insert";
                     celda.appendChild(textoCelda);
                     hilera.appendChild(celda);
                     j++
@@ -81,20 +89,17 @@ export function sensitiveTable(mps){
                 textoCelda =  document.createElement("input");
                 textoCelda.type = "number"
                 textoCelda.value = mps[i].value;
+                textoCelda.className = "insert";
                 j++;
+             //   textoCelda.setAttribute("onClick","update()");
                 celda.appendChild(textoCelda);
                 hilera.appendChild(celda);
-
             }
-
-
-        }
-        
-        
-  
+        }  
     }
   
     tabla.appendChild(tblBody);
     body.appendChild(tabla);
     tabla.setAttribute("border", "2");
   }
+ 
