@@ -6,6 +6,7 @@ import { initPivot } from './pivotHelper.js';
 import "jquery";
 import "pivottable";
 import "jqueryui";
+import { sensitiveTable } from './table.js';
 
 var aux = 0;
 var mps = [
@@ -14,13 +15,13 @@ var mps = [
   { Caracteristica: "Luz", Mes: "mes 3", value: 20 },
   { Caracteristica: "Luz", Mes: "mes 4", value: 20 },
   { Caracteristica: "Luz", Mes: "mes 5", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 6", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 7", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 8", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 9", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 10", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 11", value: 20 },
-  { Caracteristica: "Luz", Mes: "mes 12", value: 20 },
+  { Caracteristica: "Luz", Mes: "mes 6", value: 15 },
+  { Caracteristica: "Luz", Mes: "mes 7", value: 25 },
+  { Caracteristica: "Luz", Mes: "mes 8", value: 45 },
+  { Caracteristica: "Luz", Mes: "mes 9", value: 50 },
+  { Caracteristica: "Luz", Mes: "mes 10", value: 3 },
+  { Caracteristica: "Luz", Mes: "mes 11", value: 12 },
+  { Caracteristica: "Luz", Mes: "mes 12", value: 11 },
   { Caracteristica: "Telefono", Mes: "mes 1", value: 10 },
   { Caracteristica: "Telefono", Mes: "mes 2", value: 10 },
   { Caracteristica: "Telefono", Mes: "mes 3", value: 10 },
@@ -127,6 +128,8 @@ var mps = [
   { Caracteristica: "Telefono Celular4", Mes: "mes 8", value: 10 },
   { Caracteristica: "Telefono Celular4", Mes: "mes 9", value: 10 },
   { Caracteristica: "Telefono Celular4", Mes: "mes 10", value: 10 },
+  { Caracteristica: "Telefono Celular4", Mes: "mes 11", value: 5 },
+  { Caracteristica: "Telefono Celular4", Mes: "mes 12", value: 12 },
   { Caracteristica: "Telefono Celular5", Mes: "mes 11", value: 10 },
   { Caracteristica: "Telefono Celular6", Mes: "mes 12", value: 10 },
   { Caracteristica: "Telefono Celular7", Mes: "mes 12", value: 10 },
@@ -143,19 +146,19 @@ var mps = [
   { Caracteristica: "Agua", Mes: "mes 10", value: 39 },
   { Caracteristica: "Agua", Mes: "mes 11", value: 39 },
   { Caracteristica: "Agua", Mes: "mes 12", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 13", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 14", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 15", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 16", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 17", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 18", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 19", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 20", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 21", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 22", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 23", value: 3900 },
-  { Caracteristica: "Agua1", Mes: "mes 23", value: 3900 },
-  { Caracteristica: "Agua2", Mes: "mes 23", value: 3900 }
+  // { Caracteristica: "Agua", Mes: "mes 13", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 14", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 15", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 16", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 17", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 18", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 19", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 20", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 21", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 22", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 23", value: 3900 },
+  // { Caracteristica: "Agua1", Mes: "mes 23", value: 3900 },
+  // { Caracteristica: "Agua2", Mes: "mes 23", value: 3900 }
 ];
 var sum = $.pivotUtilities.aggregatorTemplates.sum;
 var numberFormat = $.pivotUtilities.numberFormat;
@@ -190,7 +193,7 @@ class App extends Component {
       //   Meteor.call('tasks.insert', JSON.stringify(mps));
       //   // Change occurred so count chars...
       // });
-
+      sensitiveTable(mps);
       initPivot(mps, config);
       aux = 1;
     }
