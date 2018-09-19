@@ -182,53 +182,17 @@ class App extends Component {
   renderTasks() {
     if (aux == 0) {
       sensitiveTable(mps);
-      // $("#hola").text(JSON.stringify(mps, undefined, 2));
-      let a = $('.insert')
-      for(let i =0 ; i < a.length;i++){
-        if(a[i].type === "number"){
-          a[i].setAttribute("onClick", function updateT(){
-            var aux=$(".insert");
-            console.log(aux);
-            let meses = [],
-            mes = true,
-            caracteristica,
-            newMps=[];
-    
-            for(let i = 0; i < aux.length; i++){
-    
-                if( mes && aux[i+1].type !== "number"){
-                    meses.push(aux[i].value);
-                }else{
-                    mes = false;  
-                    caracteristica = aux[i].value;
-                    for(let j = 0; j < meses.length; j++){
-                        i++;
-                        newMps.push({Caracteristicas : caracteristica,
-                                        Mes: meses[j],
-                                        value : aux[i].value,});
-                    }
-                }
-            }
-            var obj = Tasks.find().fetch();
-            if (obj.length > 0) {
-              Meteor.call('tasks.remove', obj[0]._id);
-            }
-            Meteor.call('tasks.insert', JSON.stringify(newMps));
-            // console.log(newMps);
-        })
-        }
-      }
-
+      // $("#hola").text(JSON.stringify(mps, undefined, 2))
       //   var mps = JSON.parse(this.value);
       //   debugger;
-        // var obj = Tasks.find().fetch();
-        // if (obj.length > 0) {
-        //   Meteor.call('tasks.remove', obj[0]._id);
-        // }
-        // Meteor.call('tasks.insert', JSON.stringify(mps));
+      // var obj = Tasks.find().fetch();
+      // if (obj.length > 0) {
+      //   Meteor.call('tasks.remove', obj[0]._id);
+      // }
+      // Meteor.call('tasks.insert', JSON.stringify(mps));
       //   // Change occurred so count chars...
       // });
-     
+
       initPivot(mps, config);
       aux = 1;
     }

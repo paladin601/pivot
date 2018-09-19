@@ -1,6 +1,8 @@
+import { Meteor } from 'meteor/meteor';
+import { Tasks } from '../api/tasks.js';
 import "jquery";
 
-export function sensitiveTable(mps,scope){
+export function sensitiveTable(mps){
 
     var body = document.getElementById("table"),
     celda,
@@ -106,5 +108,41 @@ export function sensitiveTable(mps,scope){
     tabla.appendChild(tblBody);
     body.appendChild(tabla);
     tabla.setAttribute("border", "2");
+    let a = $('.insert');
+      for (let i = 0; i < a.length; i++) {
+        if (a[i].type === "number") {
+          a[i].addEventListener("input", function () {
+            var aux = $(".insert");
+            let meses = [],
+              mes = true,
+              caracteristica,
+              newMps = [];
+
+            for (let i = 0; i < aux.length; i++) {
+
+              if (mes && aux[i + 1].type !== "number") {
+                meses.push(aux[i].value);
+              } else {
+                mes = false;
+                caracteristica = aux[i].value;
+                for (let j = 0; j < meses.length; j++) {
+                  i++;
+                  newMps.push({
+                    Caracteristica: caracteristica,
+                    Mes: meses[j],
+                    value: aux[i].value
+                  });
+                }
+              }
+            }
+            var obj = Tasks.find().fetch();
+            if (obj.length > 0) {
+              Meteor.call('tasks.remove', obj[0]._id);
+            }
+            Meteor.call('tasks.insert', JSON.stringify(newMps));
+            // console.log(newMps);
+          })
+        }
+      }
 }
  
