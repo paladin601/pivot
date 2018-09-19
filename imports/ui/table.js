@@ -7,16 +7,20 @@ export function sensitiveTable(mps){
     celda,
     hilera,
     textoCelda,
+    meses = [],
     caracteristica,
+    j = 0,
     tabla   = document.createElement("table"),
     tblBody = document.createElement("tbody");
 
     // Crea las celdas
     for (var i = 0; i < mps.length; i++) {
+
         if(reset){
             hilera = document.createElement("tr");
             reset = false;
             caracteristica = mps[i].Caracteristica;
+            j = 0;
         }
 
         celda = document.createElement("td");
@@ -36,38 +40,46 @@ export function sensitiveTable(mps){
                 }
 
                 textoCelda = document.createTextNode(mps[i].Mes);
+                meses.push(mps[i].Mes);
+                celda.appendChild(textoCelda);
+                hilera.appendChild(celda);
             }
 
         }else{
-            if(firts){
-                textoCelda = document.createTextNode(caracteristica);
-                celda.appendChild(textoCelda);
-                hilera.appendChild(celda);
-                celda = document.createElement("td");
-                firts = false;
-            }
             if(mps[i].Caracteristica !== caracteristica){
                 reset = true;
                 mes = true;
                 tblBody.appendChild(hilera);
                 firts = true;
             }else{
+                if(firts){
+                    textoCelda = document.createTextNode(caracteristica);
+                    celda.appendChild(textoCelda);
+                    hilera.appendChild(celda);
+                    celda = document.createElement("td");
+                    firts = false;
+                }
+                while(mps[i].Mes !== meses[j]) {
+                    textoCelda = document.createTextNode(0);
+                    celda.appendChild(textoCelda);
+                    hilera.appendChild(celda);
+                    j++
+                    celda = document.createElement("td");
+                }
                 textoCelda = document.createTextNode(mps[i].value);
+                j++;
+                celda.appendChild(textoCelda);
+                hilera.appendChild(celda);
             }
 
 
         }
         
-        celda.appendChild(textoCelda);
-        hilera.appendChild(celda);
+        
   
-        // agrega la hilera al final de la tabla (al final del elemento tblbody)
     }
   
-    // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
-    // appends <table> into <body>
     body.appendChild(tabla);
-    // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
   }
