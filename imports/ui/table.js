@@ -3,103 +3,108 @@ import "jquery";
 export function sensitiveTable(mps,scope){
 
     var body = document.getElementById("table"),
-    mes = false,
-    reset = true,
-    firts = true,
     celda,
     hilera,
+    nuevo,
     textoCelda,
     meses = [],
     caracteristica,
-    j = 0,
     tabla   = document.createElement("table"),
     tblBody = document.createElement("tbody");
     tabla.setAttribute("id","tabla_update");
     // Crea las celdas
-    for (var i = 0; i < mps.length; i++) {
+    caracteristica = mps[0].Caracteristica;
+    hilera = document.createElement("tr");
 
-        if(reset){
-            hilera = document.createElement("tr");
-            reset = false;
-            caracteristica = mps[i].Caracteristica;
-            j = 0;
-        }
+    for(let i = 0; i < mps.length; i++){
 
-        celda = document.createElement("td");
 
-        if(!mes){
-            
-            if(mps[i].Caracteristica !== caracteristica){
-                reset = true;
-                mes = true;
-                tblBody.appendChild(hilera);
-                i = -1;
+        if(mps[i].Caracteristica === caracteristica){
 
-            }else{
+            celda = document.createElement("td");
 
-                if(i == 0){
-                    textoCelda = document.createTextNode("");
-                    celda.appendChild(textoCelda);
-                    hilera.appendChild(celda);
-                    celda = document.createElement("td");
-                }
-
-                textoCelda =  document.createElement("input");
-                textoCelda.type = "text"
-                textoCelda.className = "insert"
-                textoCelda.value = mps[i].Mes;
-                meses.push(mps[i].Mes);
+            if(i == 0){
+                textoCelda = document.createTextNode("");
                 celda.appendChild(textoCelda);
                 hilera.appendChild(celda);
-            }
+                celda = document.createElement("td");
+             }
+
+            textoCelda =  document.createElement("input");
+            textoCelda.type = "text"
+            textoCelda.className = "insert"
+            textoCelda.value = mps[i].Mes;
+
+            meses.push(mps[i].Mes);
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
 
         }else{
-            if(mps[i].Caracteristica !== caracteristica){
 
-                reset = true;
-                mes = true;
-                tblBody.appendChild(hilera);
-                firts = true;
-                i--;
-                
+            tblBody.appendChild(hilera);
+            break;
+
+        }
+
+
+    }
+
+    
+    for (var i = 0; i < mps.length;) {
+        nuevo = true;
+        hilera = document.createElement("tr");
+
+        for(let j = 0; j < meses.length; j++){
+
+            celda = document.createElement("td");
+
+            if(j == 0 && nuevo){
+
+                textoCelda = document.createElement("input");
+                textoCelda.type = "text"
+                textoCelda.value = mps[i].Caracteristica;
+                textoCelda.className = "insert";
+
+                celda.appendChild(textoCelda);
+                hilera.appendChild(celda);
+
+                celda = document.createElement("td");
+
+                nuevo =false;
+
+            }
+
+            if(mps[i].Mes !== meses[j]){
+
+                textoCelda =  document.createElement("input");
+                textoCelda.type = "number"
+                textoCelda.value = 0;
+                textoCelda.className = "insert";
+
+                celda.appendChild(textoCelda);
+                hilera.appendChild(celda);
+
+                celda = document.createElement("td");
+                continue;
             }else{
-
-                if(firts){
-                    textoCelda = document.createElement("input");
-                    celda.appendChild(textoCelda);
-                    textoCelda.type = "text"
-                    textoCelda.value = mps[i].Caracteristica;
-                    textoCelda.className = "insert";
-                    hilera.appendChild(celda);
-                    celda = document.createElement("td");
-                    firts = false;
-                }
-
-                while(mps[i].Mes !== meses[j]) {
-                    textoCelda =  document.createElement("input");
-                    textoCelda.type = "number"
-                    textoCelda.value = 0;
-                    textoCelda.className = "insert";
-                    celda.appendChild(textoCelda);
-                    hilera.appendChild(celda);
-                    j++
-                    celda = document.createElement("td");
-                }
 
                 textoCelda =  document.createElement("input");
                 textoCelda.type = "number"
                 textoCelda.value = mps[i].value;
                 textoCelda.className = "insert";
-                j++;
-             //   textoCelda.setAttribute("onClick","update()");
+
                 celda.appendChild(textoCelda);
                 hilera.appendChild(celda);
+
             }
-        }  
+            i++
+        }
+
+        tblBody.appendChild(hilera);
     }
   
     tabla.appendChild(tblBody);
     body.appendChild(tabla);
     tabla.setAttribute("border", "2");
-  }
+}
  
