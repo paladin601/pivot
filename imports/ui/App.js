@@ -6,6 +6,7 @@ import { initPivot } from './pivotHelper.js';
 import "jquery";
 import "pivottable";
 import "jqueryui";
+import { sensitiveTable } from './table.js';
 
 var aux = 0;
 var mps = [
@@ -143,19 +144,19 @@ var mps = [
   { Caracteristica: "Agua", Mes: "mes 10", value: 39 },
   { Caracteristica: "Agua", Mes: "mes 11", value: 39 },
   { Caracteristica: "Agua", Mes: "mes 12", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 13", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 14", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 15", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 16", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 17", value: 39 },
-  { Caracteristica: "Agua", Mes: "mes 18", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 19", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 20", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 21", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 22", value: 390 },
-  { Caracteristica: "Agua", Mes: "mes 23", value: 3900 },
-  { Caracteristica: "Agua1", Mes: "mes 23", value: 3900 },
-  { Caracteristica: "Agua2", Mes: "mes 23", value: 3900 }
+  // { Caracteristica: "Agua", Mes: "mes 13", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 14", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 15", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 16", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 17", value: 39 },
+  // { Caracteristica: "Agua", Mes: "mes 18", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 19", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 20", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 21", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 22", value: 390 },
+  // { Caracteristica: "Agua", Mes: "mes 23", value: 3900 },
+  // { Caracteristica: "Agua1", Mes: "mes 23", value: 3900 },
+  // { Caracteristica: "Agua2", Mes: "mes 23", value: 3900 }
 ];
 var sum = $.pivotUtilities.aggregatorTemplates.sum;
 var numberFormat = $.pivotUtilities.numberFormat;
@@ -190,7 +191,7 @@ class App extends Component {
       //   Meteor.call('tasks.insert', JSON.stringify(mps));
       //   // Change occurred so count chars...
       // });
-
+      sensitiveTable(mps);
       initPivot(mps, config);
       aux = 1;
     }
